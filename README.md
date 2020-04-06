@@ -50,11 +50,19 @@ configuration and specified tooling.
 
 Any errors are propagated to the CLI, which triggered the process.
 
+## Usage
+
+### Installation
+
+### Getting started
+
+
+
 ## Roadmap
 
 There are several features on the roadmap:
 
-*
+* _`AuditSink`_-support
 
 ## FAQ
 
@@ -63,6 +71,8 @@ There are several features on the roadmap:
 It is possible that before the deployment start another commit hits the target
 branch. To avoid race conditions or inconsistency in dependent pipelines it is
 therefore necessary to provide the commit as well.
-However a ruleset validates the commit against the branch and makes sure the
-commit is newer or the same as the previous commit.
+To avoid inconsistencies a ruleset validates the commit against the branch and
+makes sure the deployment is rolling forward.
+Rolling back therefore should be done using proper revert-commits rather than
+force pushing an old commit.
 
