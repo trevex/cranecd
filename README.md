@@ -1,4 +1,4 @@
-# CraneCD
+# CraneCD 🏗️
 
 CraneCD is a kubernetes operator to deploy applications to
 kubernetes from within kubernetes. Key features include:
