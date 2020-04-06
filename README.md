@@ -41,7 +41,6 @@ before-hand. Once this was setup properly the shared secret can be used to
 trigger a deployment process.
 
 ![Basic overview of CraneCD](./docs/overview.svg)
-<img src="./docs/overview.svg">
 
 The operator validates the shared secret and spawns a worker. All output is
 streamed back to the invoker. The worker pulls the git repository changes using
