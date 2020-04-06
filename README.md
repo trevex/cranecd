@@ -28,17 +28,17 @@ e.g. integration tests.
 
 _CraneCD_ relies on git hosting solution to enforce its security controls, e.g.
 four-eye principle via pull-request reviews.
-The only exposed secret is a shared secret used to trigger a deployment.
-It can only be used to invoke the process, but not to parameterize it.
+The only secret exposed by a CI variable is a shared secret used to trigger a
+deployment.
 
-A CRD (`CraneConfig`) is used to store a given configuration of a deployment
+A CRD (`DeployConfig`) is used to store a given configuration of a deployment
 process. It contains the deployment and repository configuration including git
 credentials, the aforementioned shared secret, a reference to the
 `ServiceAccount` to use and more.
 
 A user with permissions to create this CR sets up the deployment configuration
-before-hand. Once this was setup properly the shared secret can be used to
-trigger a deployment process.
+before-hand. Once this was setup properly the shared secret and the commit hash
+can be used to trigger a deployment process.
 
 ![Basic overview of CraneCD](./docs/overview.svg)
 
@@ -55,3 +55,14 @@ Any errors are propagated to the CLI, which triggered the process.
 There are several features on the roadmap:
 
 *
+
+## FAQ
+
+### Why is a commit hash required as part of the trigger?
+
+It is possible that before the deployment start another commit hits the target
+branch. To avoid race conditions or inconsistency in dependent pipelines it is
+therefore necessary to provide the commit as well.
+However a ruleset validates the commit against the branch and makes sure the
+commit is newer or the same as the previous commit.
+
