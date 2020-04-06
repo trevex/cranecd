@@ -62,7 +62,8 @@ Any errors are propagated to the CLI, which triggered the process.
 
 There are several features on the roadmap:
 
-* _`AuditSink`_-support
+* `AuditSink`-API to log events to
+* _Maybe_ storing output in `PipelineRun`-CRD?
 
 ## FAQ
 
