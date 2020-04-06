@@ -1,3 +1,7 @@
 domain: cranecd.io
 repo: github.com/trevex/cranecd
+resources:
+- group: changeme
+  kind: Pipeline
+  version: v1alpha1
 version: "2"

@@ -1,10 +1,10 @@
 # CRDs
 
-## `DeployConfig`
+## `Pipeline`
 
 ```yaml
 apiVersion: cranecd.io/v1alpha1
-kind: DeployConfig
+kind: Pipeline
 metadata:
   name: myapp
   namespace: mynamespace

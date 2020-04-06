@@ -31,7 +31,7 @@ four-eye principle via pull-request reviews.
 The only secret exposed by a CI variable is a shared secret used to trigger a
 deployment.
 
-A CRD (`DeployConfig`) is used to store a given configuration of a deployment
+A CRD (`Pipeline`) is used to store a given configuration of a deployment
 process. It contains the deployment and repository configuration including git
 credentials, the aforementioned shared secret, a reference to the
 `ServiceAccount` to use and more.
