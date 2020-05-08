@@ -1,5 +1,5 @@
 /*
-Copyright 2020 Niklas Voss
+Copyright 2020 CraneCD Authors
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -17,6 +17,7 @@ limitations under the License.
 package v1alpha1
 
 import (
+	corev1 "k8s.io/api/core/v1"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 )
 
@@ -28,14 +29,61 @@ type PipelineSpec struct {
 	// INSERT ADDITIONAL SPEC FIELDS - desired state of cluster
 	// Important: Run "make" to regenerate code after modifying this file
 
-	// Foo is an example field of Pipeline. Edit Pipeline_types.go to remove/update
-	Foo string `json:"foo,omitempty"`
+	// ServiceAccount which will be used for spawned deployment jobs
+	ServiceAccount string `json:"serviceAccount"`
+
+	// Git repository to deploy
+	Git Git `json:"git"`
+
+	// +optional
+	// Helm configuration
+	Helm *Helm `json:"helm,omitempty"`
+}
+
+type Git struct {
+	//
+	Repository string `json:"repository"`
+
+	// +optional
+	Branch string `json:"branch,omitempty"`
+
+	// +optional
+	SecretName string `json:"secretName,omitempty"`
+}
+
+type Helm struct {
+	// +optional
+	Repositories []HelmRepository `json:"repositories,omitempty"`
+
+	//
+	Chart string `json:"chart"`
+
+	//
+	Release string `json:"release"`
+
+	//
+	Values []string `json:"values"`
+
+	// TODO: allow overrides?
+}
+
+type HelmRepository struct {
+	//
+	URL string `json:"url"`
+
+	//
+	Alias string `json:"alias"`
+
+	// +optional
+	SecretName string `json:"secretName,omitempty"`
 }
 
 // PipelineStatus defines the observed state of Pipeline
 type PipelineStatus struct {
 	// INSERT ADDITIONAL STATUS FIELD - define observed state of cluster
 	// Important: Run "make" to regenerate code after modifying this file
+	SharedSecret *corev1.ObjectReference `json:"sharedSecret,omitempty"`
+	ActiveJob    *corev1.ObjectReference `json:"activeJob,omitempty"`
 }
 
 // +kubebuilder:object:root=true

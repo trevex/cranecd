@@ -1,7 +1,7 @@
-domain: cranecd.io
-repo: github.com/trevex/cranecd
+domain: kubism.io
+repo: github.com/kubism/cranecd
 resources:
-- group: changeme
+- group: cranecd
   kind: Pipeline
   version: v1alpha1
 version: "2"

@@ -1,1 +1,9 @@
-/tools/kubebuilder_*
+/tools/*
+!/tools/kubebuilder-wrapper
+!/tools/kubebuilder-install
+!/tools/goget-wrapper
+!/tools/helm3-install
+/bin
+/reports
+*.coverprofile
+

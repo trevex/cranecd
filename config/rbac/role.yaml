@@ -7,7 +7,7 @@ metadata:
   name: manager-role
 rules:
 - apiGroups:
-  - cranecd.io
+  - cranecd.kubism.io
   resources:
   - pipelines
   verbs:
@@ -19,7 +19,7 @@ rules:
   - update
   - watch
 - apiGroups:
-  - cranecd.io
+  - cranecd.kubism.io
   resources:
   - pipelines/status
   verbs:
